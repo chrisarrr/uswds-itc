@@ -16,9 +16,9 @@
     if (window.uswdsPresent) {
       clearTimeout(fallback);
       revertClass();
-      document.removeEventListener("load", verifyLoaded, true);
+      document.removeEventListener('DOMContentLoaded', verifyLoaded, true);
     }
   }
 
-  document.addEventListener("load", verifyLoaded, true);
+  document.addEventListener('DOMContentLoaded', verifyLoaded, true);
 })();
