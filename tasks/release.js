@@ -8,6 +8,16 @@ const { build } = require("./build");
 const hash = crypto.createHash("sha256");
 
 const version = dutil.dirName.replace("@uswds/", "");
+const releaseName = `uswds-${version}.tgz`;
+
+const bytesToMegabytes = size => size / (1024*1024);
+
+function getFileSize(file) {
+  const { size } = fs.statSync(file);
+  const fileSize = bytesToMegabytes(size).toFixed(2);
+
+  return fileSize;
+}
 
 // Create a hash from the compiled tgz users can compare and verify
 // their download is authentic.
@@ -47,7 +57,8 @@ function zipArchives(done) {
   // @TODO get data from stdout
   zip.on("close", (code) => {
     if (code === 0) {
-      createHash(`./uswds-${version}.tgz`);
+      getFileSize(releaseName);
+      createHash(releaseName);
       done();
     }
   });
