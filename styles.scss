@@ -1,0 +1,8 @@
+// 1. Load USWDS settings
+@forward "uswds-settings.scss";
+
+// 2. Load USWDS source code
+@forward "./path/to/source/uswds";
+
+// 3. Load your project's custom Sass
+@forward "project-custom.scss";npm i
